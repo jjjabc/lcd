@@ -1,4 +1,4 @@
-package rsbpi
+package lcd
 
 import (
 	_ "github.com/golang/freetype"
