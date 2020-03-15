@@ -1,4 +1,4 @@
-package rsbpi
+package lcd
 
 import (
 	"github.com/golang/freetype"
@@ -7,15 +7,14 @@ import (
 	_ "golang.org/x/image/font"
 	"image"
 	"log"
-	"time"
 )
 
 func Strings(strs []string, size float64, spacing float64, f *truetype.Font) {
 		//for i := -64; i < 65; i++ {
-			s := time.Now()
+			//s := time.Now()
 			disPic := stringToPic(strs, size, spacing, f, 0, 0)
 			Picture(disPic)
-			time.Sleep(200*time.Millisecond - time.Now().Sub(s))
+			//time.Sleep(200*time.Millisecond - time.Now().Sub(s))
 		//}
 }
 func stringToPic(strs []string, size float64, spacing float64, f *truetype.Font, x, y int) (disPic *wbimage.WB) {

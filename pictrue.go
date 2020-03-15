@@ -1,4 +1,4 @@
-package rsbpi
+package lcd
 
 import (
 	"github.com/disintegration/imaging"
