@@ -53,6 +53,12 @@ func NewWB(r image.Rectangle) *WB {
 	return &WB{pix, 1 * w, r}
 }
 
+func Clone(src *WB) (dst *WB) {
+	dst = NewWB(src.Bounds())
+	copy(dst.Pix, src.Pix)
+	return
+}
+
 var WBModel color.Model = color.ModelFunc(wbModel)
 
 type WBColor bool
@@ -82,4 +88,4 @@ func wbModel(c color.Color) color.Color {
 	return WBColor(y > 127)
 }
 
-var Default  = NewWB(image.Rectangle{})
+var Default = NewWB(image.Rectangle{})
