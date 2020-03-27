@@ -53,6 +53,19 @@ func NewWB(r image.Rectangle) *WB {
 	return &WB{pix, 1 * w, r}
 }
 
+func Convert(img image.Image) *WB {
+	wb := NewWB(img.Bounds())
+	for x := img.Bounds().Min.X; x < img.Bounds().Max.X; x++ {
+		for y := img.Bounds().Min.Y; y < img.Bounds().Max.Y; y++ {
+			yColor := color.GrayModel.Convert(img.At(x, y)).(color.Gray).Y
+			if yColor > 127 {
+				wb.Set(x, y, WBColor(true))
+			}
+		}
+	}
+	return wb
+}
+
 func Clone(src *WB) (dst *WB) {
 	dst = NewWB(src.Bounds())
 	copy(dst.Pix, src.Pix)
