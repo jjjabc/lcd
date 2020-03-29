@@ -20,7 +20,7 @@ func Picture(i image.Image) {
 			var b byte
 			for bitIndex := 0; bitIndex < 8; bitIndex++ {
 				_, g, _, _ := wbimage.Default.ColorModel().Convert(resizedImg.At(8*x+bitIndex, y)).RGBA()
-				if g > 0xf000 {
+				if g < 0xf000 {
 					b = b | (0x80 >> bitIndex)
 				}
 			}
